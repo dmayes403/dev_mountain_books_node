@@ -1,6 +1,6 @@
-var books = [{
+module.exports = [{
   name: 'doom',
-  rating: 6
+  rating: 8
 },
 {
   name: 'grapes of wrath',

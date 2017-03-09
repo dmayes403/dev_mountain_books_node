@@ -1,10 +1,17 @@
-var books = ['doom', 'grapes of wrath', '1984'];
+var books = require('../models/books.js') // pull in books array from book.js
 
 module.exports = {
   index: function(req, res, next){
-    res.send(books);
+      if(req.query.rating){
+      var rating = parseInt(req.query.rating);
+      const ratedBooks = books.filter((book) => book.rating === rating)
+      res.send(ratedBooks);
+    } else {
+      console.log(books)
+      res.send(books)
+    }
   },
-  create: function(req, res, next){
+  build: function(req, res, next){
     books.push(req.body.name);
     res.send(books);
   },
